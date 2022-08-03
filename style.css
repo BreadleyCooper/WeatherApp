@@ -21,7 +21,12 @@ body {
 
 .temperatureContainer {
     display: grid;
-    grid-template-rows: 1fr 4fr;
+    grid-template-rows: 1fr 3fr 1fr;
+}
+
+.temperatureHead {
+    display: flex;
+    align-self: flex-end;
 }
 
 .temp {
@@ -56,6 +61,7 @@ body {
 .imgContainer {
     display: flex;
     justify-content: center;
+    margin-top: 4rem;
 }
 
 img {

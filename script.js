@@ -43,10 +43,11 @@
 //     "cod": 200
 // }
 
-const button = document.getElementById('button');
+const button = document.getElementById('searchBtn');
 const temp = document.querySelector('.temp')
 const weatherDescription = document.querySelector('.weatherDescription')
 const iconImg = document.querySelector('img')
+const unitCheckbox = document.getElementById('changeUnit')
 let latitude
 let longditude
 let weatherData
