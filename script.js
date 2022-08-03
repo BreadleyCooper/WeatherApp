@@ -81,13 +81,18 @@ async function getLocation() {
 }
 
 function displayWeather() {
+    if (unitCheckbox.checked === true) {
+        let temperature = Number(weatherData.main.temp)
+        let temperatureRounded = Math.round(temperature * 10) / 10
+        temp.textContent = Math.round(temperatureRounded * (9/5) + 32)
+    } else {
     let temperature = Number(weatherData.main.temp)
     let temperatureRounded = Math.round(temperature * 10) / 10
     temp.textContent = temperatureRounded
     weatherDescription.textContent = weatherData.weather[0].main + ", " + weatherData.weather[0].description
     chooseIcon();
     iconImg.src = icon
-}
+}}
 
 // function to determine which icon is shown based on the API weather returned ID
 function chooseIcon() {
@@ -114,4 +119,8 @@ function chooseIcon() {
 
 button.addEventListener('click', () => {
     getLocation();
+})
+
+unitCheckbox.addEventListener('click', () => {
+        displayWeather();
 })
