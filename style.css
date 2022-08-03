@@ -53,13 +53,22 @@ body {
     font-size: 1.2rem
 }
 
+.imgContainer {
+    display: flex;
+    justify-content: center;
+}
+
 img {
-    height: 100px;
+    height: 120px;
     aspect-ratio: 1;
 }
 
 form {
     width: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 input {
@@ -67,6 +76,14 @@ input {
     height: 2rem;
     width: 75%;
     font-family: 'Syncopate', sans-serif;
+    padding: 0.4rem;
+}
+
+#searchBtn {
+    width: fit-content;
+    padding: 1rem;
+    text-align: center;
+    margin-top: 10px;
 }
 
 
@@ -113,9 +130,13 @@ input {
     height: 100%;
     width: 100%;
     color: #ffffff;
-    background-color: #4fe132;
+    background-color: #4e4e4e;
     border-radius: 25px;
     transition: all 0.4s ease-in-out;
+
+    font-family: 'Syncopate', sans-serif;
+    font-size: 2em;
+    font-weight: 700;
 }
 
 .toggle .labels::before {
@@ -129,10 +150,14 @@ input {
     height: 100%;
     width: 100%;
     color: #4d4d4d;
-    background-color: #f19999;
+    background-color: #f5f5f5;
     text-align: center;
     transition: all 0.4s ease-in-out;
     border-radius: 25px;
+
+    font-family: 'Syncopate', sans-serif;
+    font-size: 2em;
+    font-weight: 700;
 }
 
 .toggle input:checked~.labels::after {
