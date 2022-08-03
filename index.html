@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,11 +9,18 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
+
 <body>
     <div class="gridContainer">
         <!-- temperature and unit changer -->
         <div class="temperatureContainer">
-            <div class="unitChanger">C/F</div>
+            <div class="unitChanger">
+                <label class="toggle" for="changeUnit">
+                    <input type="checkbox" id="changeUnit">
+                    <span class="labels" data-on="F" data-off="C"></span>
+                </label>
+                <p id="unitP">Change Units</p>
+            </div>
             <div class="temp">15</div>
         </div>
         <div class="weatherContainer">
@@ -24,10 +32,11 @@
         <!-- input field -->
         <div class="formContainer">
             <form action="post">
-                <input type="text" name="Location" id="Location" placeholder="Search for City">
+                <input type="text" name="Location" id="Location" value="London" placeholder="Search for City">
                 <button id="button" type="button">Search</button>
             </form>
         </div>
     </div>
 </body>
+
 </html>

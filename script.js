@@ -53,41 +53,46 @@ let weatherData
 let units = "metric"
 let icon
 
-async function getLocation () {
+getLocation();
+
+async function getLocation() {
     try {
         // grabbing city input
         const city = document.getElementById("Location").value;
 
         // using Geocoding API to convert city into longditude and latitude
-        const coordinatesResponse = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=9c9b81ece80393299ecb469587db705b`, {mode: 'cors'});
+        const coordinatesResponse = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=9c9b81ece80393299ecb469587db705b`, { mode: 'cors' });
         const coordinatesData = await coordinatesResponse.json()
         latitude = coordinatesData[0].lat;
         longditude = coordinatesData[0].lon;
         console.log(coordinatesData, "latiude", latitude, "longditude", longditude)
 
-         // calling openweather API 
-        const weather = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longditude}&units=${units}&appid=9c9b81ece80393299ecb469587db705b`, {mode: 'cors'})
+        // calling openweather API 
+        const weather = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longditude}&units=${units}&appid=9c9b81ece80393299ecb469587db705b`, { mode: 'cors' })
         weatherData = await weather.json();
         console.log(weatherData)
         displayWeather();
-        
-    } catch (error) {
+
+    } catch (err) {
         // error handling logic
+        console.log(err)
     }
 }
 
-function displayWeather () {
-    temp.textContent = weatherData.main.temp
-    weatherDescription.textContent = weatherData.weather[0].main
+function displayWeather() {
+    let temperature = Number(weatherData.main.temp)
+    let temperatureRounded = Math.round(temperature * 10) / 10
+    temp.textContent = temperatureRounded
+    weatherDescription.textContent = weatherData.weather[0].main + ", " + weatherData.weather[0].description
     chooseIcon();
     iconImg.src = icon
 }
 
 // function to determine which icon is shown based on the API weather returned ID
-function chooseIcon () {
+function chooseIcon() {
     let weatherID = weatherData.weather[0].id
     let weatherIDNum = Number(weatherID);
-    
+
     if (weatherIDNum >= 200 && weatherIDNum <= 232) {
         icon = "./icons/200-232Thunderstorms.png"
     } else if (weatherIDNum >= 300 && weatherIDNum <= 321) {
@@ -100,7 +105,7 @@ function chooseIcon () {
         icon = "./icons/701-781Atmosphere.png"
     } else if (weatherIDNum === 800) {
         icon = "./icons/800Clear.png"
-    }  else if (weatherIDNum >= 801 && weatherIDNum <= 804) {
+    } else if (weatherIDNum >= 801 && weatherIDNum <= 804) {
         icon = "./icons/801-804Clouds.png"
     } else icon = "Unable to provide weather icon"
 }

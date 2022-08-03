@@ -1,10 +1,10 @@
-body{
-    margin: 0
+@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Syncopate', sans-serif;
 }
 
-* {
-    border: 1px red solid;
-}
 
 .gridContainer {
     display: grid;
@@ -24,11 +24,121 @@ body{
     grid-template-rows: 1fr 4fr;
 }
 
+.temp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 3rem
+}
+
+.unitChanger {
+    display: flex;
+}
+
+#unitP {
+    padding-left: 1rem;
+}
+
+
 .weatherContainer {
     display: grid;
+}
+
+.weatherDescription {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 400;
+    font-size: 1.2rem
 }
 
 img {
     height: 100px;
     aspect-ratio: 1;
+}
+
+form {
+    width: 75%;
+}
+
+input {
+    border-radius: 20px;
+    height: 2rem;
+    width: 75%;
+    font-family: 'Syncopate', sans-serif;
+}
+
+
+/* Slider for units */
+
+
+.toggle {
+    --width: 125px;
+    --height: calc(var(--width) / 2);
+
+    position: relative;
+    display: inline-block;
+    width: var(--width);
+    height: var(--height);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    border-radius: 25px
+}
+
+.toggle input {
+    display: none;
+}
+
+.toggle .labels {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+    font-family: sans-serif;
+    transition: all 0.4s ease-in-out;
+    overflow: hidden;
+}
+
+.toggle .labels::after {
+    content: attr(data-off);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    color: #ffffff;
+    background-color: #4fe132;
+    border-radius: 25px;
+    transition: all 0.4s ease-in-out;
+}
+
+.toggle .labels::before {
+    content: attr(data-on);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: calc(var(--width) * -1);
+    height: 100%;
+    width: 100%;
+    color: #4d4d4d;
+    background-color: #f19999;
+    text-align: center;
+    transition: all 0.4s ease-in-out;
+    border-radius: 25px;
+}
+
+.toggle input:checked~.labels::after {
+    transform: translateX(var(--width));
+}
+
+.toggle input:checked~.labels::before {
+    transform: translateX(var(--width));
 }
