@@ -43,11 +43,14 @@
 //     "cod": 200
 // }
 
+// DOM elements
 const button = document.getElementById('searchBtn');
 const temp = document.querySelector('.temp')
 const weatherDescription = document.querySelector('.weatherDescription')
 const iconImg = document.querySelector('img')
 const unitCheckbox = document.getElementById('changeUnit')
+const cityHead = document.querySelector('.cityHead')
+// Global variables (I know!, it's just to demonstrate API knowledge ;)
 let latitude
 let longditude
 let weatherData
@@ -81,10 +84,13 @@ async function getLocation() {
 }
 
 function displayWeather() {
+    cityHead.textContent = weatherData.name + ", " + weatherData.sys.country 
+//   if set to Farenheit
     if (unitCheckbox.checked === true) {
         let temperature = Number(weatherData.main.temp)
         let temperatureRounded = Math.round(temperature * 10) / 10
         temp.textContent = Math.round(temperatureRounded * (9/5) + 32)
+//   if set to Celcius    
     } else {
     let temperature = Number(weatherData.main.temp)
     let temperatureRounded = Math.round(temperature * 10) / 10
@@ -120,6 +126,19 @@ function chooseIcon() {
 button.addEventListener('click', () => {
     getLocation();
 })
+
+const input = document.querySelector('#Location')
+
+// Execute a function when the user presses a key on the keyboard
+input.addEventListener("keypress", function(event) {
+  // If the user presses the "Enter" key on the keyboard
+  if (event.key === "Enter") {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    document.getElementById("searchBtn").click();
+  }
+});
 
 unitCheckbox.addEventListener('click', () => {
         displayWeather();

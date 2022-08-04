@@ -27,6 +27,7 @@ body {
 .temperatureHead {
     display: flex;
     align-self: flex-end;
+    justify-content: center;
 }
 
 .temp {
@@ -39,12 +40,21 @@ body {
 
 .unitChanger {
     display: flex;
+    margin-top: 5px;
+    margin-left: 3px;
 }
 
 #unitP {
     padding-left: 1rem;
 }
 
+.cityHead {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 2rem
+}
 
 .weatherContainer {
     display: grid;
@@ -83,6 +93,7 @@ input {
     width: 75%;
     font-family: 'Syncopate', sans-serif;
     padding: 0.4rem;
+    font-weight: 700
 }
 
 #searchBtn {
@@ -90,6 +101,9 @@ input {
     padding: 1rem;
     text-align: center;
     margin-top: 10px;
+    font-family:  'Syncopate', sans-serif;
+    border-radius: 10%;
+    cursor: pointer;
 }
 
 
